@@ -1,0 +1,7 @@
+spring:
+  message:
+    Hello world, I am from application-prod.yml in prod environment!
+
+server:
+  port:
+    9999
