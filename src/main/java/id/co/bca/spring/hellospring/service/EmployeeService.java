@@ -5,14 +5,15 @@ import id.co.bca.spring.hellospring.repository.IEmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements IEmployeeService {
 
     @Autowired
-    @Qualifier("employeeRepoImplWithJDBCTemplate")
+    @Qualifier("employeeRepoHibernate")
     private IEmployeeRepository iEmployeeRepository;
 
     public void insert(EmployeeModel employee){
@@ -31,6 +32,11 @@ public class EmployeeService {
 
     public List<EmployeeModel> allEmployees(){
         return iEmployeeRepository.retrieveAll();
+    }
+
+    @Override
+    public List<EmployeeModel> allEmployeesPage(int page, int size) {
+        return null;
     }
 }
 

@@ -1,10 +1,27 @@
 package id.co.bca.spring.hellospring.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class EmployeeModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "email")
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    @JsonManagedReference
+    private Department department;
 
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
@@ -14,5 +31,14 @@ public class EmployeeModel {
     public void setLastName(String lastName) {this.lastName = lastName;}
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
 }
+
 

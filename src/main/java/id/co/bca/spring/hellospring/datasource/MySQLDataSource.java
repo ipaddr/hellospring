@@ -18,10 +18,10 @@ public class MySQLDataSource {
     public static final String JDBC_USERNAME = "root";
     public static final String JDBC_PASSWORD = "";
 
-    public static final String STM_CREATE = "INSERT INTO employee (first_name, last_name, email, date, time, timestamp) VALUES (?,?,?,?,?,?)";
+    public static final String STM_CREATE = "INSERT INTO employee (first_name, last_name) VALUES (?,?,?)";
     public static final String STM_RETRIEVE_ALL = "SELECT * FROM employee";
     public static final String STM_RETRIEVE_BY_ID = "SELECT * FROM employee WHERE id=? ";
-    public static final String STM_UPDATE = "UPDATE employee SET first_name=?, last_name=?, email=?, date=?, time=?, timestamp=? WHERE id=?";
+    public static final String STM_UPDATE = "UPDATE employee SET first_name=?, last_name=?, email=? WHERE id=?";
     public static final String STM_DELETE = "DELETE FROM employee WHERE id=?";
 
     public MySQLDataSource(){
