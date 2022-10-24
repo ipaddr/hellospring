@@ -15,7 +15,6 @@ public class Department {
     private int id;
     @Column(name = "name")
     private String name;
-
     @JsonBackReference
     @OneToMany(mappedBy = "department")
     private List<EmployeeModel> employeeModels;

@@ -20,7 +20,6 @@ public class EmployeeModel {
 
     @ManyToOne
     @JoinColumn(name = "department_id")
-    @JsonManagedReference
     private Department department;
 
     public int getId() {return id;}

@@ -33,6 +33,7 @@ public class EmployeeController {
         model.setLastName(lastname);
         model.setEmail(email);
         model.setDepartment(null);
+        //departmentAndEmployeeService.addEmployeeToDepartmentWith(model, did);
         departmentAndEmployeeService.addEmployeeToDepartmentWithTransactional(model, did);
         return "redirect:/employee/all";
     }

@@ -13,14 +13,12 @@ public class DepartmentAndEmployeeService {
 
     @Autowired
     DepartmentSJDRepository departmentSJDRepository;
-
     @Autowired
     EmployeeSDJRepository employeeSDJRepository;
 
     public void addEmployeeToDepartment(EmployeeModel employeeModel, int did){
         employeeSDJRepository.save(employeeModel);
         Department department = departmentSJDRepository.findDepartmentById(Integer.valueOf(did));
-        departmentSJDRepository.save(department);
         employeeModel.setDepartment(department);
         employeeSDJRepository.save(employeeModel);
     }
@@ -29,9 +27,7 @@ public class DepartmentAndEmployeeService {
     public void addEmployeeToDepartmentWithTransactional(EmployeeModel employeeModel, int did){
         employeeSDJRepository.save(employeeModel);
         Department department = departmentSJDRepository.findDepartmentById(Integer.valueOf(did));
-        departmentSJDRepository.save(department);
         employeeModel.setDepartment(department);
         employeeSDJRepository.save(employeeModel);
     }
-
 }
