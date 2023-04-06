@@ -1,11 +1,14 @@
 package id.co.bca.spring.hellospring.controller;
 
 import id.co.bca.spring.hellospring.model.EmployeeModel;
+import id.co.bca.spring.hellospring.model.EmployeeWithDepartment;
+import id.co.bca.spring.hellospring.repository.EmployeeSDJRepository;
 import id.co.bca.spring.hellospring.service.DepartmentAndEmployeeService;
 import id.co.bca.spring.hellospring.service.EmployeeService;
 import id.co.bca.spring.hellospring.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.SpringVersion;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +24,15 @@ public class EmployeeController {
 
     @Autowired
     private DepartmentAndEmployeeService departmentAndEmployeeService;
+
+    @Autowired
+    private EmployeeSDJRepository employeeSDJRepository;
+
+    @GetMapping("/join")
+    public @ResponseBody List<EmployeeWithDepartment> findAllJoin(){
+        System.out.println(SpringVersion.getVersion());
+        return employeeSDJRepository.findEmployeeByIdWithDepartment();
+    }
 
     @GetMapping("/add-ed")
     public String addEmployee(@RequestParam("firstname") String firstname
