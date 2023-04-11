@@ -28,18 +28,19 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .httpBasic(Customizer.withDefaults())
-                .authorizeHttpRequests()
-                .mvcMatchers(HttpMethod.GET, "/**").permitAll()
-                .mvcMatchers(HttpMethod.POST,"/**").hasAnyAuthority("admin","employee")
-                .mvcMatchers(HttpMethod.PUT, "/**").hasAuthority("admin")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().permitAll()
-                .and()
-                .logout().permitAll();
+        http.authorizeRequests().antMatchers("/").permitAll();
+//        http
+//                .csrf().disable()
+//                .httpBasic(Customizer.withDefaults())
+//                .authorizeHttpRequests()
+//                .mvcMatchers(HttpMethod.GET, "/**").permitAll()
+//                .mvcMatchers(HttpMethod.POST,"/**").hasAnyAuthority("admin","employee")
+//                .mvcMatchers(HttpMethod.PUT, "/**").hasAuthority("admin")
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin().permitAll()
+//                .and()
+//                .logout().permitAll();
         return http.build();
     }
 }
